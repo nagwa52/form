@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import emailjs from "@emailjs/browser";
 
@@ -13,8 +13,9 @@ const MyForm = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-console.log(fromValue)   
-emailjs.send(
+    console.log(fromValue);
+    emailjs
+      .send(
         "service_f4ey52m",
         "template_dy92n3b",
         fromValue,
@@ -23,6 +24,9 @@ emailjs.send(
       .then(
         (result) => {
           console.log(result.text);
+          window.open(
+            "https://www.directmediationservices.co.uk/mediation-legal-aid/"
+          );
         },
         (error) => {
           console.log(error.text);
@@ -37,6 +41,7 @@ emailjs.send(
           <Form.Label>First Name</Form.Label>
           <Form.Control
             type="text"
+            required
             placeholder="First Name"
             value={fromValue.firstName}
             onChange={(e) =>
@@ -49,6 +54,7 @@ emailjs.send(
           <Form.Label>Last Name</Form.Label>
           <Form.Control
             type="text"
+            required
             placeholder="Last Name"
             value={fromValue.lastName}
             onChange={(e) =>
@@ -61,6 +67,7 @@ emailjs.send(
           <Form.Label>Email</Form.Label>
           <Form.Control
             type="email"
+            required
             placeholder="E-mail"
             value={fromValue.email}
             onChange={(e) =>
@@ -73,6 +80,7 @@ emailjs.send(
           <Form.Label>Phone</Form.Label>
           <Form.Control
             type="tel"
+            required
             placeholder="Phone Number"
             value={fromValue.phone}
             onChange={(e) =>
@@ -80,10 +88,13 @@ emailjs.send(
             }
           />
         </Form.Group>
-
-        <Button className="mt-3" variant="primary" type="submit">
-          Submit
-        </Button>
+        <div className="container ">
+          <div className="mt-3 row justify-content-end">
+            <Button className="col-2" variant="primary" type="submit">
+              Submit
+            </Button>
+          </div>
+        </div>
       </Form>
     </div>
   );
