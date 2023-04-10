@@ -1,9 +1,8 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import emailjs from "@emailjs/browser";
 
 const MyForm = () => {
-  // const form = useRef();
   const [fromValue, setFormValue] = useState({
     firstName: "",
     lastName: "",
